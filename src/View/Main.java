@@ -18,9 +18,13 @@ public class Main {
      */
     public static void main(String[] args) {
         
+        // Levanta el hilo de escucha
         RequestListener request = new RequestListener();
         request.start();
         
+        
+        
+        // Inicia la ventana
         MainWindow myWindow = new MainWindow();
         myWindow.setVisible(true);
         

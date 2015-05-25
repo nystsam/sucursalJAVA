@@ -12,6 +12,10 @@ package Logic;
 public class Util {
     
     public static int port = 9500;
+    public static int centralPortListener = 9600;
+    public static String centralIp = "192.168.1.131";
     
+    public static String nameSucursal = "Su1";
+    public static String nextSucursal;
     
 }

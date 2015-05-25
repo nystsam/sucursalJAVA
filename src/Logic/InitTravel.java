@@ -19,13 +19,13 @@ import java.util.logging.Logger;
 public class InitTravel extends Thread {
     
     private final String ip;
-    private final int puerto;
+    private final int port;
     private final String packetNumber;
     
     public InitTravel(String ip, int port, String packetNumber){
         
         this.ip = ip;
-        this.puerto = port;
+        this.port = port;
         this.packetNumber = packetNumber;
     }
     
@@ -33,10 +33,13 @@ public class InitTravel extends Thread {
     public void run(){
         
         try {
-            Socket so = new Socket(this.ip, this.puerto);
+            
+            // Inicia los objetos para enviar mensajes por medio del socket
+            Socket so = new Socket(this.ip, this.port);
             DataOutputStream output = new DataOutputStream(so.getOutputStream());
             DataInputStream input = new DataInputStream(so.getInputStream());
             
+            // Escribe el mensaje de salida
             output.writeUTF(this.packetNumber);
             output.flush();
             
