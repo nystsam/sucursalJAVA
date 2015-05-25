@@ -23,15 +23,13 @@ public class RequestCentralListener extends Thread {
     public void run(){
         
         try {
-            
-            sleep(5000);
-            
-            Socket so = new Socket(Util.centralIp,Util.port);
+             
+            Socket so = new Socket(Util.centralIp,Util.centralPort);
             DataOutputStream output = new DataOutputStream(so.getOutputStream());
             DataInputStream input = new DataInputStream(so.getInputStream());
             
             // Protocolo con cabecera 0, el cual indica que es un msg de saludo
-            String protocolMsg = "0 "+Util.nameSucursal;
+            String protocolMsg = "0 "+Util.nameSucursal + " " + String.valueOf(Util.port);
             
             output.writeUTF(protocolMsg);
             output.flush();
@@ -42,13 +40,19 @@ public class RequestCentralListener extends Thread {
             
             initCentralListener();
             
-        } catch (IOException ex) {
+        } catch (IOException e) {
             
-            this.start();
-            
-        } catch (InterruptedException ex) {
-            Logger.getLogger(RequestCentralListener.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            try{
+                
+                sleep(5000);
+                
+                System.out.println("Error al contactar con el servidor centralizado, reconectando...");
+                this.run();
+            } 
+            catch (InterruptedException ex) {
+                Logger.getLogger(RequestCentralListener.class.getName()).log(Level.SEVERE, null, ex);
+             }
+        } 
         
     }
     
@@ -84,8 +88,12 @@ public class RequestCentralListener extends Thread {
      */
     private void assignNames(String[] response){
     
-        Util.nextSucursal = response[0];
-        // falta nombres
+        Util.nextSucursalIp = response[0];
+        Util.nextSucursalPort = Integer.parseInt(response[1]);
+        System.out.println("Sucursal vecina: "+ Util.nextSucursalIp);
+        
+        
+        
         
     }
         

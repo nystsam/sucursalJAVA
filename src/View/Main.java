@@ -5,6 +5,7 @@
  */
 package View;
 
+import Logic.RequestCentralListener;
 import Logic.RequestListener;
 
 /**
@@ -22,7 +23,8 @@ public class Main {
         RequestListener request = new RequestListener();
         request.start();
         
-        
+        RequestCentralListener centralRequest = new RequestCentralListener();
+        centralRequest.start();
         
         // Inicia la ventana
         MainWindow myWindow = new MainWindow();
