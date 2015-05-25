@@ -27,9 +27,11 @@ public class RequestListener extends Thread {
                 System.out.println("Esperando una conexión por el puerto: " + Util.port);
                 so = ss.accept();
                 System.out.println( "Conexión recibida de: " +  so.getInetAddress().getHostAddress());
-                /* Atender solicitud
-      
-                 */
+                
+                // Atender solicitud 
+                TravelArrival serve = new TravelArrival(so);
+                serve.start();
+                
             }
         }catch(Exception e ){
             this.start();

@@ -5,6 +5,8 @@
  */
 package View;
 
+import Logic.RequestListener;
+
 /**
  *
  * @author Daniel
@@ -16,7 +18,8 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        
+        RequestListener request = new RequestListener();
+        request.start();
         
         MainWindow myWindow = new MainWindow();
         myWindow.setVisible(true);
