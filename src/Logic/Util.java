@@ -21,7 +21,7 @@ public class Util {
     public static int centralPort = 10000;
     public static int centralPortListener = 9700;
     
-    public static String centralIp = "192.168.1.131";
+    public static String centralIp = "192.168.2.122";
     
     // Nombre de la sucursal
     public static String Sucursalname = "Su1";
@@ -52,7 +52,7 @@ public class Util {
         newText.addElement(text+" - " + timeStamp);
         Util.console.setModel(newText);
         
-    }
+    }   
     
     
     
