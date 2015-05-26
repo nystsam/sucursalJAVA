@@ -5,8 +5,10 @@
  */
 package View;
 
+import Logic.CentralRequestListener;
 import Logic.GetIpLan;
 import Logic.InitTravel;
+import Logic.Util;
 
 /**
  *
@@ -20,7 +22,16 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         initComponents();
         
+        this.jLabelSucursalName.setText(Util.Sucursalname);
         this.jLabelIpLan.setText(GetIpLan.getIp());
+        
+        Util.console = this.jListConsole;
+        Util.neighbor= this.jLabelNeighbor;
+        
+        // Inicia el servidor para atender solicitudes de la central *Se coloco aqui para poder utilizar los componenetes inicializados)
+        CentralRequestListener centralRequest = new CentralRequestListener();
+        centralRequest.start();
+
         
     }
 
@@ -36,16 +47,21 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelIpLan = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonIniciar = new javax.swing.JButton();
-        jTextFieldipSucursalVecina = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSpinnerPaquetes = new javax.swing.JSpinner();
+        jLabelSucursalName = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListConsole = new javax.swing.JList();
+        jLabelNeighbor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabelIpLan.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabelIpLan.setText("xxx.xxx.xxx.xxx");
 
-        jLabel2.setText("IP de sucursal vecina");
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("IP de sucursal vecina:");
 
         jButtonIniciar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButtonIniciar.setText("Iniciar");
@@ -55,12 +71,21 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Tu direccion IP:");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Tu direccion IP");
 
         jButton1.setText("Paquete");
 
         jSpinnerPaquetes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
+
+        jLabelSucursalName.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        jLabelSucursalName.setText("Nombre");
+
+        jListConsole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jScrollPane1.setViewportView(jListConsole);
+
+        jLabelNeighbor.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
+        jLabelNeighbor.setText("xxx.xxx.xxx.xxx");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,30 +94,29 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonIniciar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelSucursalName, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelNeighbor, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldipSucursalVecina, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelIpLan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(57, 57, 57))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabelIpLan, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButtonIniciar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
                                 .addComponent(jSpinnerPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())))
+                                .addComponent(jButton1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,18 +124,22 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jTextFieldipSucursalVecina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelSucursalName)
+                            .addComponent(jLabelNeighbor))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(jSpinnerPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(82, 82, 82))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelIpLan)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jSpinnerPaquetes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                        .addComponent(jLabelIpLan)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jButtonIniciar)
                 .addContainerGap())
         );
@@ -121,13 +149,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
        
-        // Si no esta vacio el campo de texto, inicia el envio
-        if(!this.jTextFieldipSucursalVecina.getText().equals("")){
-            
-            InitTravel transport = new InitTravel(this.jTextFieldipSucursalVecina.getText(), 9500, this.jSpinnerPaquetes.getValue().toString());
-            transport.start();
-            
-        }
         
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
@@ -173,7 +194,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelIpLan;
+    private javax.swing.JLabel jLabelNeighbor;
+    private javax.swing.JLabel jLabelSucursalName;
+    private javax.swing.JList jListConsole;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerPaquetes;
-    private javax.swing.JTextField jTextFieldipSucursalVecina;
     // End of variables declaration//GEN-END:variables
 }

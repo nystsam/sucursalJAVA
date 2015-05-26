@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  *
  * @author Daniel
  */
-public class RequestCentralListener extends Thread {
+public class CentralRequestListener extends Thread {
     
     @Override
     public void run(){
@@ -29,7 +29,7 @@ public class RequestCentralListener extends Thread {
             DataInputStream input = new DataInputStream(so.getInputStream());
             
             // Protocolo con cabecera 0, el cual indica que es un msg de saludo
-            String protocolMsg = "0 "+Util.nameSucursal + " " + String.valueOf(Util.port);
+            String protocolMsg = "0 "+Util.Sucursalname + " " + String.valueOf(Util.port);
             
             output.writeUTF(protocolMsg);
             output.flush();
@@ -50,7 +50,7 @@ public class RequestCentralListener extends Thread {
                 this.run();
             } 
             catch (InterruptedException ex) {
-                Logger.getLogger(RequestCentralListener.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(CentralRequestListener.class.getName()).log(Level.SEVERE, null, ex);
              }
         } 
         
@@ -63,22 +63,26 @@ public class RequestCentralListener extends Thread {
     
         ServerSocket ss;
         Socket so;
+        Util.centralDaemon = true;
         
         try {
             
             ss = new ServerSocket(Util.centralPortListener);
-            while(true){
+            while(Util.centralDaemon){
                 
                 System.out.println("Esperando una conexión con el servidor centralizado por el puerto: " + Util.port);
                 so = ss.accept();
                 System.out.println( "Mensaje de la central obtenido");
                 
-                // Atender mensaje
+                // Atender mensaje de la central
+                AttendCentralRequest newRequest = new AttendCentralRequest(so);
+                newRequest.start();
+                
                 
             }
                      
         } catch (IOException ex) { 
-            Logger.getLogger(RequestCentralListener.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CentralRequestListener.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -87,10 +91,14 @@ public class RequestCentralListener extends Thread {
      * @param response respuesta de la central en array
      */
     private void assignNames(String[] response){
-    
+            
         Util.nextSucursalIp = response[0];
         Util.nextSucursalPort = Integer.parseInt(response[1]);
-        System.out.println("Sucursal vecina: "+ Util.nextSucursalIp);
+        
+        // Asigna en pantalla la IP vecina
+        Util.neighbor.setText(response[0]);    
+        System.out.println("Sucursal vecina: "+ Util.nextSucursalIp);      
+        Util.addText("Sucursal vecina: "+Util.nextSucursalIp);
         
         
         

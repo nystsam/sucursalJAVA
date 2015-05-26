@@ -15,11 +15,11 @@ import java.util.logging.Logger;
  *
  * @author Daniel
  */
-public class MessgeFromCentral extends Thread {
+public class AttendCentralRequest extends Thread {
     
     private final Socket so;
 
-    public MessgeFromCentral(Socket so) {
+    public AttendCentralRequest(Socket so) {
         
         this.so = so;
         
@@ -39,17 +39,23 @@ public class MessgeFromCentral extends Thread {
                 // Cambio de vecino
                 case "0":
                     
+                    Util.neighbor.setText(message[1]);
                     Util.nextSucursalIp = message[1];
+                    
                     Util.nextSucursalPort = Integer.parseInt(message[2]);
-                    System.out.println("Nuevo vecino asignado: "+Util.nameSucursal+", "+Util.port);
+                    System.out.println("Nuevo vecino asignado: "+Util.nextSucursalIp+", "+Util.nextSucursalPort);
+                    Util.addText("Se cambio de vecino a: "+Util.nextSucursalIp);
+                    
                     break;
-                
+               // Fin Cambio de vecino
+                    
+                    
             }
             
             
             
         } catch (IOException ex) {
-            Logger.getLogger(MessgeFromCentral.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AttendCentralRequest.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
