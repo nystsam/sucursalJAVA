@@ -9,6 +9,7 @@ import Logic.CentralRequestListener;
 import Logic.GetIpLan;
 import Logic.InitTravel;
 import Logic.SendRequestCentral;
+import Logic.SendRequestSucursal;
 import Logic.Util;
 import Model.Request;
 import java.io.IOException;
@@ -108,6 +109,11 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel3.setText("Tu direccion IP");
 
         jButton1.setText("Paquete");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jSpinnerPaquetes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
@@ -120,7 +126,6 @@ public class MainWindow extends javax.swing.JFrame {
         jLabelNeighbor.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jLabelNeighbor.setText("xxx.xxx.xxx.xxx");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -198,6 +203,24 @@ public class MainWindow extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        if (this.jComboBox1.getItemCount()>0)
+        {
+            String item = String.valueOf(this.jComboBox1.getSelectedItem());
+            String[]ip = item.split("!");
+            try {
+                SendRequestSucursal request = new SendRequestSucursal("192.168.2.122", 9500);
+                request.SendRequest(new Request(1));
+            } catch (UnknownHostException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,11 +4,13 @@
  */
 package Model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author LAB_L11
  */
-public class Request {
+public class Request implements Serializable{
     
     private int codRequest;
 

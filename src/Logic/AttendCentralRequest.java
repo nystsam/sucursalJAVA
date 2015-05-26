@@ -5,8 +5,11 @@
  */
 package Logic;
 
+import Model.Request;
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +35,18 @@ public class AttendCentralRequest extends Thread {
         try {
             
             DataInputStream input = new DataInputStream(this.so.getInputStream());
+            byte[] bytes = null;
+            input.read(bytes);
+            ByteArrayInputStream bs= new ByteArrayInputStream(bytes); // bytes es el byte[]
+            ObjectInputStream is = new ObjectInputStream(bs);
+            try {
+                Request request = (Request)is.readObject();
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AttendCentralRequest.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            is.close();
+            
+            /*
             String [] message = input.readUTF().split(" ");
             
             switch(message[0]){
@@ -47,10 +62,14 @@ public class AttendCentralRequest extends Thread {
                     Util.addText("Se cambio de vecino a: "+Util.nextSucursalIp);
                     
                     break;
+                case "1":
+                    
+                    
+                    break;
                // Fin Cambio de vecino
                     
                     
-            }
+            }*/
             
             
             
