@@ -213,6 +213,7 @@ public class MainWindow extends javax.swing.JFrame {
             try {
                 SendRequestSucursal request = new SendRequestSucursal("192.168.2.122", 9500);
                 request.SendRequest(new Request(1));
+                request.closeCentral();
             } catch (UnknownHostException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
