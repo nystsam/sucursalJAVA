@@ -211,13 +211,19 @@ public class MainWindow extends javax.swing.JFrame {
             String item = String.valueOf(this.jComboBox1.getSelectedItem());
             String[]ip = item.split("!");
             try {
+                
                 SendRequestSucursal request = new SendRequestSucursal("192.168.2.122", 9500);
                 request.SendRequest(new Request(1));
                 request.closeCentral();
+                
             } catch (UnknownHostException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Error conectando al servidor central");
             } catch (IOException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Error conectando al servidor central");
+            } catch(Exception ex){
+                JOptionPane.showMessageDialog(null, "Error conectando al servidor central");
             }
         }
         

@@ -91,7 +91,7 @@ public class CentralRequestListener extends Thread {
      * @param response respuesta de la central en array
      */
     private void assignNames(String[] response){
-            
+            /*
         Util.nextSucursalIp = response[0];
         Util.nextSucursalPort = Integer.parseInt(response[1]);
         
@@ -100,7 +100,7 @@ public class CentralRequestListener extends Thread {
         System.out.println("Sucursal vecina: "+ Util.nextSucursalIp);      
         Util.addText("Sucursal vecina: "+Util.nextSucursalIp);
         
-        
+        */
         
         
     }
