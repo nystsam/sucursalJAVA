@@ -34,7 +34,11 @@ public class SolicitarVecinos {
         output.writeUTF("2 ");
         output.flush();
         
-                } catch (IOException ex) {
+        String message = input.readUTF();
+       
+        this.actualizarVecino(message);
+        
+        } catch (IOException ex) {
             Logger.getLogger(SolicitarVecinos.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -42,5 +46,16 @@ public class SolicitarVecinos {
         return false;
     }
     
+    
+    private void actualizarVecino(String msg){
+        
+        String [] datos = msg.split("@");
+        
+        Util.nextSucursalIp = datos[0];
+        Util.nextSucursalPort = Integer.parseInt(datos[1]);
+        
+        Util.neighbor.setText(datos[0]);
+        
+    }
     
 }

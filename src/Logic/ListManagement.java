@@ -277,5 +277,31 @@ public class ListManagement {
         return msg;
     }
     
+    public int cantidadPaquetesTransporte(){
+        
+        Document doc;
+        Element root,child;
+        List <Element> rootChildrens;
+       
+        SAXBuilder builder = new SAXBuilder();
+
+        try
+        {
+            doc = builder.build("src/XmlFiles/Transporte.xml");
+            root = doc.getRootElement();
+            rootChildrens = root.getChildren();
+            
+            return rootChildrens.size();
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+   
+        return 0;
+        
+    }
+    
     
 }

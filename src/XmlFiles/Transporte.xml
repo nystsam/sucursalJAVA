@@ -8,4 +8,9 @@ and open the template in the editor.
   <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
   <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
   <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
+  <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
+  <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
+  <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
+  <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
+  <TransPaquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
 </Transporte>

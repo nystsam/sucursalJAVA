@@ -32,14 +32,27 @@ public class TravelArrival extends Thread{
     
     @Override
     public void run(){
-        Request request = null;
+
         try {
             
             DataOutputStream output = new DataOutputStream(this.so.getOutputStream());
             DataInputStream input = new DataInputStream(this.so.getInputStream());
-            byte[] bytes = new byte[100000];
-            input.read(bytes);
-            request = ConvertToRequest(bytes);
+            
+            // Lee la peticion de la sucursal
+            String[] llegadaTransporte = input.readUTF().split(" ");
+            
+            // Respuesta a la sucursal
+            String sendResponse = "";
+            
+            switch(llegadaTransporte[0]){
+                
+                // Saludo de una sucursal
+                case "5":
+                    
+                    System.out.println(llegadaTransporte[1]);
+                    
+                    break;
+            }
             
         } catch (IOException ex) {
             Logger.getLogger(TravelArrival.class.getName()).log(Level.SEVERE, null, ex);
