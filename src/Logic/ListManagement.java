@@ -18,6 +18,33 @@ import org.jdom2.output.XMLOutputter;
  */
 public class ListManagement {
     
+    
+    public boolean initTransport(){
+    
+        Document doc;
+        Element root,child;
+        List <Element> rootChildrens;
+       
+        int pos = 0;
+        SAXBuilder builder = new SAXBuilder();
+
+        try
+        {
+            doc = builder.build("src/XmlFiles/ListaPaquetes.xml");
+            root = doc.getRootElement();
+            rootChildrens = root.getChildren();
+            
+ 
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
     public boolean savePaquetes(int ite, String ipDestiny, String portDestiny, String sucursalOrigin){
         
         if(this.maxCapPaquetes()){
