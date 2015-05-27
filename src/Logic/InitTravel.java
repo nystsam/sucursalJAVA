@@ -21,12 +21,14 @@ public class InitTravel extends Thread {
     private final String ip;
     private final int port;
     private final String packetNumber;
+    private String msg;
     
-    public InitTravel(String ip, int port, String packetNumber){
+    public InitTravel(String ip, int port, String packetNumber, String msg){
         
         this.ip = ip;
         this.port = port;
         this.packetNumber = packetNumber;
+        this.msg = msg;
     }
     
     @Override
@@ -34,6 +36,21 @@ public class InitTravel extends Thread {
         
         try {
             
+            int time = 15000;
+            if(7 == Integer.parseInt(this.packetNumber)){
+                time += 1000; 
+            }
+            else if(8 == Integer.parseInt(this.packetNumber)){
+                time += 2000;
+            }
+            else if(9 == Integer.parseInt(this.packetNumber)){
+                time += 3000;
+            }
+            else if(10 == Integer.parseInt(this.packetNumber)){
+                time += 4000;
+            }
+            
+            //sleep(time);
             // Inicia los objetos para enviar mensajes por medio del socket
             Socket so = new Socket(this.ip, this.port);
             DataOutputStream output = new DataOutputStream(so.getOutputStream());
@@ -47,6 +64,8 @@ public class InitTravel extends Thread {
         catch (IOException ex) {
             System.out.println("Error al establecer conexion.");
       
-        }
+        } /*catch (InterruptedException ex) {
+            Logger.getLogger(InitTravel.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
 }

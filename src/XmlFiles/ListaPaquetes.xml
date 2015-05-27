@@ -7,6 +7,4 @@ and open the template in the editor.
 <Paquetes>
   <Paquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
   <Paquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
-  <Paquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
-  <Paquete IpDestiny="192.168.55.454" PortDestiny="9700" SucursalOrigen="Su1" />
 </Paquetes>

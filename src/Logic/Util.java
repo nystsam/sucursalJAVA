@@ -24,7 +24,7 @@ public class Util {
     public static int centralPort = 10000;
     public static int centralPortListener = 9700;
     
-    public static String centralIp = "192.168.3.111";
+    public static String centralIp = "192.168.4.45";
     
     // Nombre de la sucursal
     public static String Sucursalname = "Su1";
@@ -43,6 +43,8 @@ public class Util {
     
     // Combo de la sucursal
     public static JComboBox combo;
+    
+    public static boolean estaTransporte = true;
     
     public static ArrayList<Paquete> listaEspera = new ArrayList<Paquete>();
     public static ArrayList<Paquete> listaEnvio = new ArrayList<Paquete>();

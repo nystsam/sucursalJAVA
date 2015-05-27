@@ -153,7 +153,7 @@ public class MainWindow extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,6 +209,9 @@ public class MainWindow extends javax.swing.JFrame {
        Util.addText("El transporte inciará su reccorido en unos momentos...");
        ListManagement transport = new ListManagement();
        transport.initTransport();
+       
+       String msg = transport.sendMsg();
+       InitTravel travel = new InitTravel();
         
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
