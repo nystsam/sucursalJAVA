@@ -21,7 +21,7 @@ public class Util {
     public static int centralPort = 10000;
     public static int centralPortListener = 9700;
     
-    public static String centralIp = "192.168.2.122";
+    public static String centralIp = "192.168.1.251";
     
     // Nombre de la sucursal
     public static String Sucursalname = "Su1";

@@ -35,18 +35,7 @@ public class AttendCentralRequest extends Thread {
         try {
             
             DataInputStream input = new DataInputStream(this.so.getInputStream());
-            byte[] bytes = null;
-            input.read(bytes);
-            ByteArrayInputStream bs= new ByteArrayInputStream(bytes); // bytes es el byte[]
-            ObjectInputStream is = new ObjectInputStream(bs);
-            try {
-                Request request = (Request)is.readObject();
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(AttendCentralRequest.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            is.close();
-            
-            /*
+
             String [] message = input.readUTF().split(" ");
             
             switch(message[0]){
@@ -69,7 +58,7 @@ public class AttendCentralRequest extends Thread {
                // Fin Cambio de vecino
                     
                     
-            }*/
+            }
             
             
             
