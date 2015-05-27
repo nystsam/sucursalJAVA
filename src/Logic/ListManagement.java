@@ -34,7 +34,30 @@ public class ListManagement {
             root = doc.getRootElement();
             rootChildrens = root.getChildren();
             
- 
+            while(pos < rootChildrens.size()){
+                
+                root.removeContent(pos);
+                
+                pos++;
+            }
+            
+            try
+                {
+                    Format format = Format.getPrettyFormat();
+                    // Se genera un flujo de salida de datos XML
+                    XMLOutputter out = new XMLOutputter(format);
+                    // Se asocia el flujo de salida con el archivo donde se guardaran los datos
+                    FileOutputStream file = new FileOutputStream("src/XmlFiles/ListaPaquetes.xml");
+                    // Se manda el documento generado hacia el archivo XML 
+                    out.output(doc,file);
+                    // Se limpia el buffer ocupado por el objeto file y se manda a cerrar el archivo
+                    file.flush();
+                    file.close();
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
             
         }
         catch(Exception e)
@@ -43,6 +66,39 @@ public class ListManagement {
         }
         
         return false;
+    }
+
+    private boolean loadPaquetes(){
+        
+        
+        
+        return false;
+    }
+    
+    public String [] readPaquetes(int pos){
+        
+        Document doc;
+        Element root,child;
+        List <Element> rootChildrens;
+        String [] list = new String[3];
+       
+        SAXBuilder builder = new SAXBuilder();
+
+        try
+        {
+            doc = builder.build("src/XmlFiles/ListaPaquetes.xml");
+            root = doc.getRootElement();
+            rootChildrens = root.getChildren();
+            
+            
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return list;
     }
     
     public boolean savePaquetes(int ite, String ipDestiny, String portDestiny, String sucursalOrigin){

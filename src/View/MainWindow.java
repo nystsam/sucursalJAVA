@@ -208,6 +208,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
        Util.addText("El transporte inciará su reccorido en unos momentos...");
        ListManagement transport = new ListManagement();
+       transport.initTransport();
         
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
