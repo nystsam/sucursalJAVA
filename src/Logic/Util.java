@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
@@ -20,10 +21,10 @@ import javax.swing.JList;
 public class Util {
     
     public static int port = 9500;
-    public static int centralPort = 10500;
+    public static int centralPort = 10000;
     public static int centralPortListener = 9700;
     
-    public static String centralIp = "192.168.1.251";
+    public static String centralIp = "192.168.3.179";
     
     // Nombre de la sucursal
     public static String Sucursalname = "Su1";
@@ -39,6 +40,9 @@ public class Util {
     
     // Consola de la sucursal
     public static JList console;
+    
+    // Combo de la sucursal
+    public static JComboBox combo;
     
     public static ArrayList<Paquete> listaEspera = new ArrayList<Paquete>();
     public static ArrayList<Paquete> listaEnvio = new ArrayList<Paquete>();
@@ -60,5 +64,17 @@ public class Util {
     }   
     
     
+    public static void updateCombo(String info){
+        
+        String[] ips = info.split("@");
+        int i = 0;
+        Util.combo.removeAllItems();
+        while(i < ips.length)
+        {                    
+            Util.combo.addItem(ips[0]);
+            i++;
+        }
+        
+    }
     
 }

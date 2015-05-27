@@ -51,11 +51,14 @@ public class AttendCentralRequest extends Thread {
                     Util.addText("Se cambio de vecino a: "+Util.nextSucursalIp);
                     
                     break;
+                    
+                // Fin Cambio de vecino    
                 case "1":
                     
                     
+                    
                     break;
-               // Fin Cambio de vecino
+               
                     
                     
             }

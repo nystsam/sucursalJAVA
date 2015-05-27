@@ -52,10 +52,12 @@ public class MainWindow extends javax.swing.JFrame {
                 {                    
                     this.jComboBox1.addItem(ips[i]);
                     i++;
-                }                
+                }
+                
+                Util.combo = this.jComboBox1;
             }
             else {
-                JOptionPane.showMessageDialog(null, "Error conectando al servidor central");
+                JOptionPane.showMessageDialog(null, "No existen sucursales vivas");
             }
             request.closeCentral();
                 
