@@ -55,7 +55,7 @@ public class AttendCentralRequest extends Thread {
                 // Fin Cambio de vecino    
                 case "1":
                     
-                    
+                    Util.updateCombo(message[1]);
                     
                     break;
                

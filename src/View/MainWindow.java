@@ -35,6 +35,7 @@ public class MainWindow extends javax.swing.JFrame {
         
         Util.console = this.jListConsole;
         Util.neighbor= this.jLabelNeighbor;
+        Util.combo = this.jComboBox1;
         
         // Inicia el servidor para atender solicitudes de la central *Se coloco aqui para poder utilizar los componenetes inicializados)
         CentralRequestListener centralRequest = new CentralRequestListener();
@@ -53,8 +54,6 @@ public class MainWindow extends javax.swing.JFrame {
                     this.jComboBox1.addItem(ips[i]);
                     i++;
                 }
-                
-                Util.combo = this.jComboBox1;
             }
             else {
                 JOptionPane.showMessageDialog(null, "No existen sucursales vivas");

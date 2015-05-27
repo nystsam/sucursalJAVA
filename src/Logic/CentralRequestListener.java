@@ -29,7 +29,7 @@ public class CentralRequestListener extends Thread {
             DataInputStream input = new DataInputStream(so.getInputStream());
             
             // Protocolo con cabecera 0, el cual indica que es un msg de saludo
-            String protocolMsg = "0 "+Util.Sucursalname + " " + String.valueOf(Util.port);
+            String protocolMsg = "0 "+Util.Sucursalname + " " + String.valueOf(Util.centralPortListener);
             
             output.writeUTF(protocolMsg);
             output.flush();
