@@ -50,6 +50,8 @@ public class TravelArrival extends Thread{
                 case "5":
                     
                     System.out.println(llegadaTransporte[1]);
+                    ListManagement transporte = new ListManagement();
+                    
                     
                     break;
             }

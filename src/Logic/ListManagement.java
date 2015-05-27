@@ -303,5 +303,64 @@ public class ListManagement {
         
     }
     
+
+    public boolean transporteEnSucursal(String msg){
+        
+        String [] paquetes = msg.split("@");
+        
+        Document    doc;
+            Element     root, newChild;
+            SAXBuilder  builder = new SAXBuilder();
+
+            try
+            {
+                doc = builder.build("src/XmlFiles/Transporte.xml");
+                root = doc.getRootElement();
+                // Creamos una nueva etiqueta
+                int i = 0;
+
+                while(i < paquetes.length){
+                    
+                    sleep(2000);
+                    String [] datos = paquetes[i].split("!");
+                    newChild = new Element("Paquete");
+
+                    // Añadimos un atributo
+                    newChild.setAttribute("IpDestiny", datos[0]);
+                    newChild.setAttribute("PortDestiny", datos[1]);   
+                    newChild.setAttribute("SucursalOrigen", datos[2]);   
+
+                    // La añadimos como hija a una etiqueta ya existente
+                    root.addContent(newChild);
+                    i++;
+                }
+                try
+                {
+                    Format format = Format.getPrettyFormat();
+                    // Se genera un flujo de salida de datos XML
+                    XMLOutputter out = new XMLOutputter(format);
+                    // Se asocia el flujo de salida con el archivo donde se guardaran los datos
+                    FileOutputStream file = new FileOutputStream("src/XmlFiles/ListaPaquetes.xml");
+                    // Se manda el documento generado hacia el archivo XML 
+                    out.output(doc,file);
+                    // Se limpia el buffer ocupado por el objeto file y se manda a cerrar el archivo
+                    file.flush();
+                    file.close();
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+                
+                return true;
+
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+      
+        return false;
+    }
     
 }
