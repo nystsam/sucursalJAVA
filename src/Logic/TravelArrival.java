@@ -49,9 +49,9 @@ public class TravelArrival extends Thread{
                 // Saludo de una sucursal
                 case "5":
                     
-                    System.out.println(llegadaTransporte[1]);
+                    //System.out.println(llegadaTransporte[1]);
                     ListManagement transporte = new ListManagement();
-                    
+                    transporte.transporteEnSucursal(llegadaTransporte[1]);
                     
                     break;
             }

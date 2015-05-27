@@ -230,6 +230,7 @@ public class MainWindow extends javax.swing.JFrame {
        
        int numPaquetes = list.cantidadPaquetesTransporte();
        String msg = transport.sendMsg();
+       transport.leavingTransport();
        InitTravel travel = new InitTravel(Util.nextSucursalIp, Util.nextSucursalPort, String.valueOf(numPaquetes), msg);
        travel.start();
         

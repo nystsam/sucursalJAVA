@@ -362,5 +362,55 @@ public class ListManagement {
       
         return false;
     }
+ 
+    public boolean leavingTransport(){
+    
+        Document doc;
+        Element root,child;
+        List <Element> rootChildrens;
+       
+        int pos = 0;
+        SAXBuilder builder = new SAXBuilder();
+
+        try
+        {
+            doc = builder.build("src/XmlFiles/Transporte.xml");
+            root = doc.getRootElement();
+            rootChildrens = root.getChildren();
+            
+            while(pos < rootChildrens.size()){
+                
+                rootChildrens.remove(0);
+                
+                pos++;
+            }
+            
+            try
+                {
+                    Format format = Format.getPrettyFormat();
+                    // Se genera un flujo de salida de datos XML
+                    XMLOutputter out = new XMLOutputter(format);
+                    // Se asocia el flujo de salida con el archivo donde se guardaran los datos
+                    FileOutputStream file = new FileOutputStream("src/XmlFiles/Transporte.xml");
+                    // Se manda el documento generado hacia el archivo XML 
+                    out.output(doc,file);
+                    // Se limpia el buffer ocupado por el objeto file y se manda a cerrar el archivo
+                    file.flush();
+                    file.close();
+                }
+                catch(Exception e)
+                {
+                    throw e;
+                }
+            
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
     
 }

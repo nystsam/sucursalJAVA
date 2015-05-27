@@ -53,7 +53,7 @@ public class InitTravel extends Thread {
             Util.addText("El transporte se encuentra en camino con una carga de "+this.packetNumber+" paquetes... ");
             //sleep(time);
             // Inicia los objetos para enviar mensajes por medio del socket
-            Socket so = new Socket(this.ip, this.port);
+            Socket so = new Socket(this.ip, 9500);
             DataOutputStream output = new DataOutputStream(so.getOutputStream());
             DataInputStream input = new DataInputStream(so.getInputStream());
             
