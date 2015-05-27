@@ -205,7 +205,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SendRequestSucursal request = null;
+   /*     SendRequestSucursal request = null;
         if (this.jComboBox1.getItemCount()>0)
         {
             String item = String.valueOf(this.jComboBox1.getSelectedItem());
@@ -229,7 +229,7 @@ public class MainWindow extends javax.swing.JFrame {
         //        request.closeCentral();
                 JOptionPane.showMessageDialog(null, "Error conectando al servidor central");
             }
-        }
+        }*/
         
     }//GEN-LAST:event_jButton1ActionPerformed
 

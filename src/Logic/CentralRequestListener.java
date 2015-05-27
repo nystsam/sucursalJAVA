@@ -70,7 +70,7 @@ public class CentralRequestListener extends Thread {
             ss = new ServerSocket(Util.centralPortListener);
             while(Util.centralDaemon){
                 
-                System.out.println("Esperando una conexión con el servidor centralizado por el puerto: " + Util.port);
+                System.out.println("Esperando una conexión con el servidor centralizado por el puerto: " + Util.centralPortListener);
                 so = ss.accept();
                 System.out.println( "Mensaje de la central obtenido");
                 

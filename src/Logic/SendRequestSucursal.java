@@ -47,7 +47,7 @@ public class SendRequestSucursal {
             
             output.write(bytes);
             output.flush();
-            response = input.readUTF().split(" ");
+            /*response = input.readUTF().split(" ");
             
             if(response.length <= 0 ) {
                 return "false";
@@ -55,8 +55,8 @@ public class SendRequestSucursal {
             if(response[0].equals("0"))
                 return "false";
             
-            return response[1];
-            
+            return response[1];*/
+            return "";
         } catch (IOException ex) {
             Logger.getLogger(SendRequestCentral.class.getName()).log(Level.SEVERE, null, ex);            
         }
